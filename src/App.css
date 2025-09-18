@@ -1,0 +1,783 @@
+.form-warning {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.input-error {
+  border: 2px solid red !important;
+  background: #ffe6e6 !important;
+}
+
+.save-message {
+  margin-top: 20px;
+  background: #e6ffed;
+  color: #2c662d;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: 1px solid #b7eb8f;
+}
+
+.driver-summary-card {
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.driver-summary-card .card-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #0077cc;
+}
+
+.section-title {
+  margin-top: 32px;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #444;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 4px;
+}
+
+.summary-field {
+  margin: 14px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-field label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.summary-field input {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f5f5f5;
+  color: #222;
+  font-size: 0.95rem;
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.summary-field input:focus {
+  outline: none;
+  background: #eaeaea;
+}
+
+.button-row {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-row .primary {
+  background-color: #0077cc;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.button-row .primary:hover {
+  background-color: #005fa3;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.driver-summary-card {
+  color: #000 !important;
+  background: #fff !important;
+}
+
+.summary-field input {
+  color: #000 !important;
+  background: #f5f5f5 !important;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+}
+
+.map-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255,255,255,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: bold;
+  color: #0077cc;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.global-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: bold;
+  color: #0077cc;
+  z-index: 99999;
+}
+
+.global-loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: bold;
+  color: #333;
+  z-index: 99999;
+  pointer-events: none;
+  background: transparent;
+}
+
+.dots-loader {
+  display: inline-block;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dots span {
+  animation: blink 1.2s infinite;
+  display: inline-block;
+  opacity: 0;
+}
+
+.dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+.dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.day-block {
+  margin-bottom: 32px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.day-block h4 {
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  color: #0077cc;
+}
+
+.error {
+  border: 2px solid #cc0000 !important;
+  background: #ffe6e6;
+}
+
+#eld-canvas {
+  transition: box-shadow 0.3s ease;
+}
+
+#eld-canvas:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+#eld-canvas {
+  transition: box-shadow 0.3s ease;
+}
+
+#eld-canvas:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+
+
+/* === General Layout === */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.card-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1f2937;
+}
+
+/* === Instruction Message === */
+.instruction {
+  font-size: 1rem;
+  color: #374151;
+  background: #f9fafb;
+  padding: 12px 16px;
+  border-left: 4px solid #3b82f6;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+/* === Error Banner === */
+.error-banner {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  border-left: 4px solid #dc2626;
+}
+
+/* === Day Block === */
+.day-block {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 24px;
+  background: #fdfdfd;
+}
+
+.day-block h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #2563eb;
+}
+
+/* === Status Grid === */
+.status-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.status-row label {
+  min-width: 120px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.status-row input {
+  width: 100px;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+}
+
+.status-row input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
+}
+
+.status-row input.error {
+  border-color: #dc2626;
+  background: #fee2e2;
+}
+
+/* === Buttons === */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #e5e7eb;
+  color: #111827;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #d1d5db;
+}
+
+button.primary {
+  background: #3b82f6;
+  color: #fff;
+}
+
+button.primary:hover {
+  background: #2563eb;
+}
+
+button.remove-day {
+  margin-top: 12px;
+  background: #ef4444;
+  color: #fff;
+}
+
+button.remove-day:hover {
+  background: #dc2626;
+}
+
+/* === Canvas Styling === */
+#eld-canvas {
+  transition: box-shadow 0.3s ease;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  margin-top: 16px;
+}
+
+#eld-canvas:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.eld-wrapper {
+  margin-top: 24px;
+}
+
+.eld-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.color-box {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px #ccc;
+}
+
+.eld-details {
+  margin-top: 16px;
+}
+
+.eld-details h4 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+.eld-details table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.eld-details th,
+.eld-details td {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.eld-details th {
+  background: #f3f4f6;
+  font-weight: 600;
+}
+
+/* === General Layout === */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9fafb;
+  color: #1f2937;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.card-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1f2937;
+}
+
+/* === Instruction Message === */
+.instruction {
+  font-size: 1rem;
+  color: #374151;
+  background: #f3f4f6;
+  padding: 12px 16px;
+  border-left: 4px solid #3b82f6;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+/* === Error Banner === */
+.error-banner {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  border-left: 4px solid #dc2626;
+}
+
+/* === Day Block === */
+.day-block {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 24px;
+  background: #ffffff;
+}
+
+.day-block h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #2563eb;
+}
+
+/* === Status Grid === */
+.status-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.status-row label {
+  min-width: 120px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.status-row input {
+  width: 100px;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+}
+
+.status-row input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
+}
+
+.status-row input.error {
+  border-color: #dc2626;
+  background: #fee2e2;
+}
+
+/* === Buttons === */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #e5e7eb;
+  color: #111827;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #d1d5db;
+}
+
+button.primary {
+  background: #3b82f6;
+  color: #fff;
+}
+
+button.primary:hover {
+  background: #2563eb;
+}
+
+button.remove-day {
+  margin-top: 12px;
+  background: #ef4444;
+  color: #fff;
+}
+
+button.remove-day:hover {
+  background: #dc2626;
+}
+
+/* === Canvas Styling === */
+#eld-canvas {
+  transition: box-shadow 0.3s ease;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  margin-top: 16px;
+}
+
+/* === Legend Styling === */
+.eld-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.color-box {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px #ccc;
+}
+
+/* === Summary Table === */
+.eld-details {
+  margin-top: 24px;
+}
+
+.eld-details h4 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+.eld-details table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.eld-details th,
+.eld-details td {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.eld-details th {
+  background: #f3f4f6;
+  font-weight: 600;
+}
+
+.timeline-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.day-block {
+  margin-bottom: 32px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 24px;
+}
+
+.day-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 12px;
+}
+
+
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9fafb;
+  margin: 0;
+  padding: 20px;
+  color: #111827;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 32px;
+}
+
+.card-title {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #1f2937;
+}
+
+.instruction {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+.status-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.status-table th,
+.status-table td {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+  font-size: 14px;
+}
+
+.status-table th {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input.error {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.error-banner {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+button.primary {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.day-block {
+  margin-bottom: 48px;
+}
+
+.day-title {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #1f2937;
+}
+
+.timeline-card {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+
+

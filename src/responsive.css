@@ -1,0 +1,508 @@
+/* responsive.css */
+
+/*--------------------------------------------------------------
+  1. FLUID TYPOGRAPHY & SPACING
+--------------------------------------------------------------*/
+html {
+  /* Base font-size scales between 14px and 18px depending on viewport width */
+  font-size: clamp(0.875rem, 0.8rem + 0.5vw, 1.125rem);
+}
+
+:root {
+  /* Fluid gap and padding between 8px and 32px */
+  --spacing-sm: clamp(0.5rem, 1vw, 1rem);
+  --spacing-md: clamp(1rem, 2vw, 2rem);
+  --spacing-lg: clamp(1.5rem, 3vw, 3rem);
+}
+
+/*--------------------------------------------------------------
+  2. LAYOUT BREAKPOINTS
+--------------------------------------------------------------*/
+/* Extra-large screens (desktops, >1200px) */
+@media (min-width: 1200px) {
+  .layout {
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+  }
+  .left-pane, .right-pane {
+    gap: var(--spacing-md);
+  }
+}
+
+/* Medium screens (tablets, 768px–1199px) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-md);
+  }
+  .map, .map-placeholder {
+    height: 260px;
+  }
+  .logs-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+/* Small screens (mobiles, <768px) */
+@media (max-width: 767px) {
+  .layout {
+    display: block;
+    padding: var(--spacing-sm);
+  }
+  .map, .map-placeholder {
+    height: 200px;
+  }
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--spacing-sm);
+  }
+  .topbar .brand span {
+    font-size: clamp(1rem, 6vw, 1.4rem);
+  }
+}
+
+/*--------------------------------------------------------------
+  3. FLUID CARD & FORM ADJUSTMENTS
+--------------------------------------------------------------*/
+/* Make each card a CSS container for sub-queries */
+.card {
+  container-type: inline-size;
+  padding: clamp(1rem, 2vw, 3rem);
+}
+
+/* If a card’s width exceeds 500px, show forms in two columns */
+@container (min-width: 500px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+}
+
+/* If a card is narrower, collapse forms to single column */
+@container (max-width: 499px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+}
+
+/*--------------------------------------------------------------
+  4. RESPONSIVE TABLES & LISTS
+--------------------------------------------------------------*/
+@media (max-width: 768px) {
+  table, .stops-table, .eld-log-table {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+  }
+  th, td {
+    padding: var(--spacing-sm);
+  }
+}
+
+/* Fluid table layout: horizontal scroll on small */
+@media (max-width: 600px) {
+  .card table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/*--------------------------------------------------------------
+  5. BUTTONS & TOUCH TARGETS
+--------------------------------------------------------------*/
+/* Increase tap area on mobile */
+@media (max-width: 600px) {
+  button {
+    padding: var(--spacing-md);
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+  }
+}
+
+/*--------------------------------------------------------------
+  6. CUSTOM SCROLLBAR FOR SMALL SCREENS
+--------------------------------------------------------------*/
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--clr-primary);
+  }
+}
+
+/*--------------------------------------------------------------
+  7. UTILITY CLASSES
+--------------------------------------------------------------*/
+/* Hide elements only on small screens */
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Hide elements only on large screens */
+@media (min-width: 768px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+/* ✅ الأساس */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+  font-size: clamp(1rem, 1vw, 1.2rem);
+}
+
+/* ✅ الحاوية الرئيسية */
+.app-shell {
+  width: 100%;
+  max-width: 100%;
+  padding: clamp(20px, 5vw, 80px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 4vw, 60px);
+}
+
+/* ✅ النموذج: تجاوب ذكي */
+.input-form,
+.trip-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(16px, 2vw, 32px);
+}
+
+@media screen and (min-width: 1024px) {
+  .input-form,
+  .trip-form {
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .input-form,
+  .trip-form {
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  }
+}
+
+/* ✅ الحقول */
+.field,
+.summary-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label,
+.summary-field label {
+  font-size: clamp(1.1rem, 1.2vw, 1.4rem);
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.field input,
+.summary-field input {
+  font-size: clamp(1.1rem, 1.3vw, 1.5rem);
+  padding: clamp(14px, 1.5vw, 20px);
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  color: #222;
+}
+
+/* ✅ العناوين */
+.card-title,
+.section-title {
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  font-weight: bold;
+  margin-bottom: clamp(16px, 2vw, 24px);
+  color: #0077cc;
+}
+
+.section-title {
+  margin-top: clamp(32px, 4vw, 48px);
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+}
+
+/* ✅ الأزرار */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 3vw, 40px);
+  margin-top: clamp(24px, 3vw, 40px);
+}
+
+.button-row button {
+  font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+  padding: clamp(16px, 2vw, 24px) clamp(24px, 3vw, 36px);
+  border-radius: 12px;
+  font-weight: bold;
+  min-width: clamp(160px, 20vw, 240px);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.primary {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+}
+
+.primary:hover {
+  background-color: #005fa3;
+}
+
+.ghost {
+  background-color: transparent;
+  color: #0077cc;
+  border: 2px solid #0077cc;
+}
+
+.ghost:hover {
+  background-color: #e6f2ff;
+}
+
+/* ✅ الرسائل */
+.error-box,
+.save-message,
+.user-guide-box {
+  font-size: clamp(1.1rem, 1.3vw, 1.5rem);
+  padding: clamp(18px, 2vw, 28px);
+  border-radius: 12px;
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+
+.error-box {
+  background: #ffe6e6;
+  border-left: 6px solid #cc0000;
+  color: #990000;
+}
+
+.save-message {
+  background: #e6ffed;
+  border-left: 6px solid #2c662d;
+  color: #2c662d;
+}
+
+.user-guide-box {
+  background: #eef6ff;
+  border-left: 6px solid #3399ff;
+  color: #333;
+}
+
+
+/* ✅ الأساس لجميع الشاشات */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+  font-size: clamp(1rem, 1vw, 1.2rem);
+}
+
+.app-shell {
+  width: 100%;
+  max-width: 100%;
+  padding: clamp(16px, 5vw, 80px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 4vw, 60px);
+}
+
+/* ✅ النموذج الأساسي */
+.input-form,
+.trip-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(16px, 2vw, 32px);
+}
+
+/* ✅ هاتف صغير: 320–480px */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  body {
+    font-size: 1rem;
+  }
+  .input-form,
+  .trip-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ✅ هاتف متوسط: 480–768px */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  body {
+    font-size: 1.05rem;
+  }
+  .input-form,
+  .trip-form {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+/* ✅ تابلت: 768–1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  body {
+    font-size: 1.1rem;
+  }
+  .input-form,
+  .trip-form {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+}
+
+/* ✅ لابتوب صغير: 1024–1366px */
+@media screen and (min-width: 1025px) and (max-width: 1366px) {
+  body {
+    font-size: 1.2rem;
+  }
+  .input-form,
+  .trip-form {
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  }
+}
+
+/* ✅ لابتوب كبير: 1366–1600px */
+@media screen and (min-width: 1367px) and (max-width: 1600px) {
+  body {
+    font-size: 1.3rem;
+  }
+  .input-form,
+  .trip-form {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+}
+
+/* ✅ شاشة مكتبية HD: 1600–1920px */
+@media screen and (min-width: 1601px) and (max-width: 1920px) {
+  body {
+    font-size: 1.4rem;
+  }
+  .input-form,
+  .trip-form {
+    grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+  }
+}
+
+/* ✅ شاشة 2K أو 4K: 1920–3840px */
+@media screen and (min-width: 1921px) {
+  body {
+    font-size: 1.5rem;
+  }
+  .input-form,
+  .trip-form {
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  }
+}
+
+/* ✅ الحقول */
+.field,
+.summary-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label,
+.summary-field label {
+  font-size: clamp(1.1rem, 1.3vw, 1.6rem);
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.field input,
+.summary-field input {
+  font-size: clamp(1.1rem, 1.4vw, 1.7rem);
+  padding: clamp(14px, 1.5vw, 22px);
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  color: #222;
+}
+
+/* ✅ العناوين */
+.card-title,
+.section-title {
+  font-size: clamp(1.4rem, 2vw, 2.2rem);
+  font-weight: bold;
+  margin-bottom: clamp(16px, 2vw, 24px);
+  color: #0077cc;
+}
+
+.section-title {
+  margin-top: clamp(32px, 4vw, 48px);
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+}
+
+/* ✅ الأزرار */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 3vw, 40px);
+  margin-top: clamp(24px, 3vw, 40px);
+  justify-content: flex-start;
+}
+
+.button-row button {
+  font-size: clamp(1.2rem, 1.6vw, 1.8rem);
+  padding: clamp(18px, 2vw, 26px) clamp(28px, 3vw, 40px);
+  border-radius: 12px;
+  font-weight: bold;
+  min-width: clamp(180px, 20vw, 260px);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.primary {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+}
+
+.primary:hover {
+  background-color: #005fa3;
+}
+
+.ghost {
+  background-color: transparent;
+  color: #0077cc;
+  border: 2px solid #0077cc;
+}
+
+.ghost:hover {
+  background-color: #e6f2ff;
+}
+
+/* ✅ الرسائل */
+.error-box,
+.save-message,
+.user-guide-box {
+  font-size: clamp(1.2rem, 1.4vw, 1.6rem);
+  padding: clamp(20px, 2vw, 30px);
+  border-radius: 12px;
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+
+.error-box {
+  background: #ffe6e6;
+  border-left: 6px solid #cc0000;
+  color: #990000;
+}
+
+.save-message {
+  background: #e6ffed;
+  border-left: 6px solid #2c662d;
+  color: #2c662d;
+}
+
+.user-guide-box {
+  background: #eef6ff;
+  border-left: 6px solid #3399ff;
+  color: #333;
+}
