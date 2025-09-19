@@ -49,7 +49,7 @@ npm run build
 Make sure your Django backend is deployed and accessible at:
 
 `
-https://your-backend-url.onrender.com
+*********************************************
 `
 
 Update all Axios base URLs accordingly.
